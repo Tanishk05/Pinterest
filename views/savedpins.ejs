@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= user.username %> | savedpins</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body>
+    
+    <div class="container w-full h-full ">
+
+      <div class="nav w-full [15%] flex  justify-between px-8 py-6 ">
+        <div class="part1 flex gap-1">
+          <div id="logo" class="x8f INd _O1 KS5 mQ8 OGJ YbY " style="height:48px;width:48px"><svg class="gUZ GjR U9O kVc"
+              height="24" width="24" viewBox="0 0 24 24" aria-hidden="true" aria-label="" role="img">
+              <path
+                d="M0 12c0 5.123 3.211 9.497 7.73 11.218-.11-.937-.227-2.482.025-3.566.217-.932 1.401-5.938 1.401-5.938s-.357-.715-.357-1.774c0-1.66.962-2.9 2.161-2.9 1.02 0 1.512.765 1.512 1.682 0 1.025-.653 2.557-.99 3.978-.281 1.189.597 2.159 1.769 2.159 2.123 0 3.756-2.239 3.756-5.471 0-2.861-2.056-4.86-4.991-4.86-3.398 0-5.393 2.549-5.393 5.184 0 1.027.395 2.127.889 2.726a.36.36 0 0 1 .083.343c-.091.378-.293 1.189-.332 1.355-.053.218-.173.265-.4.159-1.492-.694-2.424-2.875-2.424-4.627 0-3.769 2.737-7.229 7.892-7.229 4.144 0 7.365 2.953 7.365 6.899 0 4.117-2.595 7.431-6.199 7.431-1.211 0-2.348-.63-2.738-1.373 0 0-.599 2.282-.744 2.84-.282 1.084-1.064 2.456-1.549 3.235C9.584 23.815 10.77 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12">
+              </path>
+            </svg></div>
+  
+          <div class="allbtns ">
+            <a href="/home" class="buttons  p-3 ">Home</a>
+            <a class="buttons  p-3">Explore</a>
+            <a href="/createpin" class="buttons  p-3">Create</a>
+  
+          </div>
+        </div>
+  
+  
+  
+        <div class="part2-nav flex gap-5 mt-2 ">
+          <a href="/profile" id="firstletter" class="nav-2 capitalize text-lg"></a>
+          <a id="set" class="nav-2"><i class="ri-arrow-down-s-line text-lg"></i></a>
+             
+        </div>
+  
+      </div>
+        
+  
+      <div id="settings" class="main-overlay hidden py-4 pl-4 w-[20vmax] rounded-2xl ">
+
+        <p class="ml-1">cuurently in</p>
+        <div class="top w-full mt-3 flex gap-4 ">
+  
+          <div class="profile w-[4.5vmax] h-[4.5vmax] rounded-full overflow-hidden">
+            <img class="w-full h-full object-cover" src="/images/uploads/<%= user.profile %>" alt="">
+          </div>
+  
+          <div class="right mt-1 leading-none">
+            <h3 class="font-medium text-sm leading-none ">
+              <%= user.username %>
+            </h3>
+            <p class="font-light mt-1 text-sm">Personal</p>
+  
+          </div>
+  
+  
+        </div>
+  
+  
+        <div class="account mt-4">
+          <p class="text-sm ml-1">Your accounts</p>
+          <a href="/add/accounts">
+            <h3 class="hover px-2 py-2 text-lg mt-3 font-semibold cursor-pointer">Add account</h3>
+          </a>
+  
+        </div>
+  
+        <div class="moreoptions mt-4">
+          <h3 class="text-sm ml-1">settings</h3>
+          <a href="/home ">
+            <h3 class="hover ml-1 px-1 py-2 text-lg mt-3 font-semibold cursor-pointer">Tune your feed</h3>
+          </a>
+          <a href="/logout">
+            <h3 class="hover ml-1 px-1 py-2 text-lg mt-3 font-semibold cursor-pointer">Log out</h3>
+          </a>
+  
+        </div>
+  
+  
+  
+  
+      </div>
+        
+        <div class="postarea w-full relative h-[85%] overflow-x-hidden overflow-y-auto " >
+
+            <div class="top flex items-center justify-center w-full  h-[10%]  ">
+                <h3 class="text-xl font-medium ">All pins</h3>
+
+            </div>
+            <div class="bottom w-full h-[90%] px-16 flex  gap-4 py-5">
+                 
+             <% user.savedpins.forEach(function(elem){ %>
+
+             
+              <a href="/openpin/<%= elem._id %>">
+                <div class="pincontainer relative">
+                  <div class="pin w-[20vmax] h-[15vmax] bg-red-600 relative overflow-hidden " style="border-radius: 15px;">
+                    <img class="w-full h-full object-cover object-center" src="/images/uploads/<%= elem.image %>" alt="">
+                  </div>
+                  
+                   
+                   <a href="/openpin/<%= elem._id %>">
+                    <h3 class="ml-2 mt-1 cursor-pointer " style="max-width: 200px;"><%= elem.title %></h3>
+                   </a>
+                 </div>
+              </a>
+
+
+             <% })  %>
+
+            </div>
+        </div>
+    </div>
+
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "gilroy";
+          }
+    
+          html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+          }
+    
+    
+          .container{
+            position: relative;
+
+          }
+         
+          #logo{
+        fill: red;
+      }
+
+    
+
+     
+      
+    .buttons{
+        cursor: pointer;
+
+    }
+
+     .buttons:hover{
+        background-color: black;
+        color: white;
+        border-radius: 50px;
+     }
+
+    
+     
+
+     .nav-2{
+      position: relative;
+      background-color:#E9E9E9;
+      width: 2vw;
+      height: 2vw;
+      border-radius: 50%;
+      display: flex;
+      align-items:center;
+      justify-content: center;
+
+     }
+
+
+     .post-option a{
+      position: relative;
+      cursor: pointer;
+     }
+
+     
+    
+     #settings {
+      z-index: 99999;
+      position: absolute;
+      right: 3vw;
+      top: 9%;
+      background-color:#E60023;
+      color:rgb(255, 255, 255);
+    }
+
+      .hover{
+         position: relative;
+         border-radius: 10px;
+         transition: all ease 3s;
+         cursor: pointer;
+      }
+      
+
+      .hover:hover{
+         background-color: silver;
+      }
+
+    
+
+         .overlay{
+          position: absolute;
+          width: 180px;
+          height: 140px;
+          background-color:rgba(0, 0, 0, 0.552);
+         border-radius: 15px;
+         top: 0; 
+         left: 0;
+         z-index: 99;
+         opacity: 0;
+
+         }
+
+
+
+         .overlay:hover{
+          opacity: 1;
+
+         }
+
+  @media screen and (max-width: 680px) {
+  
+    .bottom{
+      flex-direction: column;
+
+    }
+    .pin{
+      width: 30vmax;
+      height: 25vmax;
+
+    }
+}
+    </style>
+
+    <script>
+      const username = `<%= user.username %>`;
+   const arr = Array.from(username)
+    
+   const firstletter = arr[0]; 
+
+   document.querySelector("#firstletter").innerHTML = firstletter
+
+
+
+   let check = 0;
+   document.querySelector("#set").addEventListener("click", function(){
+    
+    if(check == 0){
+      document.querySelector("#settings").style.display = "block";
+      check = 1
+    }
+
+    else{
+      document.querySelector("#settings").style.display = "none";
+      check = 0
+    }
+   })
+
+   
+    </script>
+</body>
+</html>

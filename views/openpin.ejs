@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>open pin </title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+  <div class="main w-full h-full relative  ">
+
+    <div class="nav w-full [15%] flex  justify-between px-8 py-6 ">
+      <div class="part1 flex gap-1">
+        <div id="logo" class="x8f INd _O1 KS5 mQ8 OGJ YbY " style="height:48px;width:48px"><svg class="gUZ GjR U9O kVc"
+            height="24" width="24" viewBox="0 0 24 24" aria-hidden="true" aria-label="" role="img">
+            <path
+              d="M0 12c0 5.123 3.211 9.497 7.73 11.218-.11-.937-.227-2.482.025-3.566.217-.932 1.401-5.938 1.401-5.938s-.357-.715-.357-1.774c0-1.66.962-2.9 2.161-2.9 1.02 0 1.512.765 1.512 1.682 0 1.025-.653 2.557-.99 3.978-.281 1.189.597 2.159 1.769 2.159 2.123 0 3.756-2.239 3.756-5.471 0-2.861-2.056-4.86-4.991-4.86-3.398 0-5.393 2.549-5.393 5.184 0 1.027.395 2.127.889 2.726a.36.36 0 0 1 .083.343c-.091.378-.293 1.189-.332 1.355-.053.218-.173.265-.4.159-1.492-.694-2.424-2.875-2.424-4.627 0-3.769 2.737-7.229 7.892-7.229 4.144 0 7.365 2.953 7.365 6.899 0 4.117-2.595 7.431-6.199 7.431-1.211 0-2.348-.63-2.738-1.373 0 0-.599 2.282-.744 2.84-.282 1.084-1.064 2.456-1.549 3.235C9.584 23.815 10.77 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12">
+            </path>
+          </svg></div>
+
+        <div class="allbtns ">
+          <a href="/home" class="buttons  p-3 ">Home</a>
+          <a class="buttons  p-3">Explore</a>
+          <a href="/createpin" class="buttons  p-3">Create</a>
+
+        </div>
+      </div>
+
+
+
+      <div class="part2-nav flex gap-5 mt-2 ">
+        <a href="/profile" id="firstletter" class="nav-2 capitalize text-lg"></a>
+        <a id="set" class="nav-2"><i class="ri-arrow-down-s-line text-lg"></i></a>
+
+      </div>
+
+    </div>
+
+
+    <div id="settings" class="main-overlay hidden py-4 pl-4 w-[20vmax] rounded-2xl ">
+
+      <p class="ml-1">cuurently in</p>
+      <div class="top w-full mt-3 flex gap-4 ">
+
+        <div class="profile w-[4.5vmax] h-[4.5vmax] rounded-full overflow-hidden">
+          <img class="w-full h-full object-cover" src="/images/uploads/<%= user.profile %>" alt="">
+        </div>
+
+        <div class="right mt-1 leading-none">
+          <h3 class="font-medium text-sm leading-none ">
+            <%= user.username %>
+          </h3>
+          <p class="font-light mt-1 text-sm">Personal</p>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="account mt-4">
+        <p class="text-sm ml-1">Your accounts</p>
+        <a href="/add/accounts">
+          <h3 class="hover px-2 py-2 text-lg mt-3 font-semibold cursor-pointer">Add account</h3>
+        </a>
+
+      </div>
+
+      <div class="moreoptions mt-4">
+        <h3 class="text-sm ml-1">settings</h3>
+        <a href="/home ">
+          <h3 class="hover ml-1 px-1 py-2 text-lg mt-3 font-semibold cursor-pointer">Tune your feed</h3>
+        </a>
+        <a href="/logout">
+          <h3 class="hover ml-1 px-1 py-2 text-lg mt-3 font-semibold cursor-pointer">Log out</h3>
+        </a>
+
+      </div>
+
+
+
+
+    </div>
+
+    
+    <div class="container w-full  h-[85%] flex justify-center pl-12 ">
+  
+      <div class="right w-[100%] h-[100%] flex gap-4  rounded-lg " style="box-shadow:  1px 2px 2px rgb(201, 201, 201);">
+
+        <div class="pin w-[40vmax]  h-[30vmax]  rounded-3xl overflow-hidden ">
+          <img class="w-full h-full object-cover" src="/images/uploads/<%= openpin.image %>" alt="">
+        </div>
+
+
+
+        <div class="pindescription w-[50%] h-[95%] ">~
+          <div class="top flex justify-center ">
+            <div class="right flex gap-4 items-center  mt-7">
+              <a href="/board/<%= openpin._id %>/<%= openpin.board %>" class="cursor-pointer">
+
+                <h3>
+                  <%= openpin.board %><span><i class="ri-arrow-down-s-line"></i></span>
+                </h3>
+              </a>
+
+            </div>
+
+          </div>
+
+          <div class="dets flex flex-col  w-ful gap-4  pl-12 py-8">
+            <h3 class="text-sm">
+              <%= openpin.title %>
+            </h3>
+            <p class="w-9/12 text-sm">
+              <%= openpin.description %>
+            </p>
+          </div>
+
+          <div class="pinuserdets w-full relative pl-12 px-12 flex justify-between items-center ">
+
+            <div class="left flex gap-2">
+
+              <div class="part1">
+                <a href="/profile/<%= openpin.user._id %>">
+                  <div class="profile w-[50px] h-[50px] rounded-full overflow-hidden ">
+                    <img class="relative  w-full h-full object-cover " src="/images/uploads/<%= openpin.user.profile %>"
+                      alt="">
+                  </div>
+                </a>
+              
+              </div>
+
+
+              <div class="part2 flex flex-col ">
+                <a href="/profile/<%= openpin.user._id %>" class="cursor-pointer">
+                  <h3 class="capitalize">
+                    <%= openpin.user.username %>
+                  </h3>
+                </a>
+                <p>
+                  <%= openpin.user.followers.length %> Followers
+                </p>
+
+              </div>
+
+            </div>
+            <div class="right">
+
+              <% if(openpin.user.followers.indexOf(loginuser._id)===-1){ %>
+                <a href="/follow/<%= openpin.user._id %>/<%= openpin._id %>" id="follow"
+                  class="btn follow bg-[#E2E2E2] py-3 px-4 rounded-3xl">
+                  Follow
+                </a>
+                <% } else{ %>
+                  <a href="/follow/<%= openpin.user._id %>/<%= openpin._id %>" id="follow"
+                    class="btn follow bg-[black] py-3 px-4 rounded-3xl text-white">
+                    Following
+                  </a>
+                  <% } %>
+
+
+            </div>
+
+          </div>
+
+          <div class="commentopt relative w-full flex justify-between px-14 py-5 ">
+
+            <div class="left flex gap-1">
+              <h3 class="font-semibold ">Comments</h3>
+              <p>
+                <%= openpin.comments.length %>
+              </p>
+            </div>
+            <i id="down" class="ri-arrow-down-s-line text-xl"></i>
+            <i id="up" class="ri-arrow-up-s-line text-xl" style="display: none;"></i>
+
+          </div>
+
+
+          <div class="allcomments  relative pl-14 px-12 py-8  w-full h-[35%]  overflow-x-hidden overflow-y-auto"
+            style="opacity: 0;">
+
+            <% if(openpin.comments.length> 0){ %>
+
+              <div class="edit-comment hidden">
+
+                <form class="edit-form" action="" method="post">
+                  <input id="editcomment" name="editcomment" style="outline: none; border: 1px solid silver; border-radius:50px;"
+                    class="px-3 py-2 w-10/12" type="text" placeholder="edit comment">
+
+                  <div class="btns mt-2 flex content-center gap-3 text-white">
+                    <a id="cut" class="btne px-3 py-2  cursor-pointer"
+                      style="background-color: black; border-radius: 50px; border: none;">cancel</a>
+                    <input id="save" class="btne px-3 py-2" style="background-color: red; border-radius: 50px; "
+                      type="submit" value="save">
+                  </div>
+
+                </form>
+
+
+              </div>
+
+              <% commentpinuser.forEach(function(elem){ %>
+                <div class="commentscontainer flex gap-2 py-4 ">
+
+
+                  <a href="/profile/<%= elem.user._id %>">
+                    <div class="commentuserprofile relative w-[30px] h-[30px] bg-[red] rounded-full overflow-hidden">
+                      <img class="w-full h-full object-cover rounded-full"
+                        src="/images/uploads/<%= elem.user.profile %>" alt="">
+
+
+                    </div>
+                  </a>
+
+                  <div class="commentuserandmessage flex gap-2 items-center">
+                    <a id="commentusername" href="/profile/<%= elem.user._id %>" class="font-medium text-lg cursor-pointer ">
+                      <%= elem.user.username %>
+                    </a>
+                    <p id="commentusertext">
+                      <%= elem.text %>
+                    </p>
+
+
+                  </div>
+
+
+                  <div class="edit mt-1 ml-1">
+
+                    <% if(loginuser.username===elem.user.username){ %>
+                      <i class="ri-more-fill cursor-pointer"></i>
+                      <% } %>
+
+                        <div class="options hidden py-1  px-2 w-[130px]" style="background-color: whitesmoke;">
+                          <h3 data-val="<%= elem.text %>" class="edit-option"
+                            id="/comment/edit/<%= elem._id %>/<%= openpin._id %>">edit</h3>
+
+                          <a href="/comment/delete/<%= elem._id %>/<%= openpin._id %>">
+                            <h3 class="mt-2">delete</h3>
+                          </a>
+                        </div>
+
+
+                  </div>
+                </div>
+
+                <% }) %>
+
+
+                  <% } else { %>
+
+                    <p id="notcomment">not have enough comments to show ! </p>
+
+                    <% } %>
+
+          </div>
+
+
+          <div class="createcomment w-full relative h-[10%] pl-14 px-12 flex gap-5  ">
+
+            <div class="userprofile w-[55px] h-[55px] rounded-full  overflow-hidden ">
+              <img class="w-full h-full object-cover" src="/images/uploads/<%= loginuser.profile %>" alt="">
+
+            </div>
+
+            <form class="mt-1" action="/comment/<%= openpin._id %>" method="post">
+
+              <div class="box bg-[#DADADA] rounded-3xl absolute w-[75%] flex ">
+                <input aria-activedescendant="none" id="comment" name="comment"
+                  class="bg-[#DADADA] rounded-3xl w-[90%] py-3 px-4  cursor-pointer" type="text"
+                  placeholder="Add a comment" style="outline: none; ">
+
+                <div class="add hidden mt-1">
+                  <button type="submit" id="sendcomment"> <i
+                      class="ri-send-plane-2-fill text-[red] text-2xl  "></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+
+
+
+
+    </div>
+
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "gilroy";
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+
+
+      #logo {
+        fill: red;
+      }
+
+      
+      .buttons {
+        cursor: pointer;
+
+      }
+
+      .buttons:hover {
+        background-color: black;
+        color: white;
+        border-radius: 50px;
+      }
+
+
+
+
+      .nav-2 {
+        position: relative;
+        background-color: #E9E9E9;
+        width: 2vw;
+        height: 2vw;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+      }
+
+
+      .post-option a {
+        position: relative;
+        cursor: pointer;
+      }
+
+
+
+
+
+      #settings {
+        z-index: 99999;
+        position: absolute;
+        right: 3vw;
+        top: 9%;
+        background-color: #E60023;
+        color: rgb(255, 255, 255);
+      }
+
+
+      .hover {
+        position: relative;
+        border-radius: 10px;
+        transition: all ease 3s;
+        cursor: pointer;
+      }
+
+
+      .hover:hover {
+        background-color: silver;
+      }
+
+
+
+
+
+      .allcomments::-webkit-scrollbar {
+        display: none;
+      }
+
+
+
+      .options h3:hover {
+        background-color: rgb(207, 207, 207);
+
+      }
+
+
+      @media screen and (max-width: 680px) {
+
+          .nav{
+            height: auto;
+          }
+
+         .container{
+          height: auto;
+          flex-direction: column;
+          overflow: hidden;
+
+         }
+
+        .right{
+          width: 100%;
+          height: 100%;
+          flex-direction: column;
+          justify-content: center;
+        
+        }
+
+         .right .pin{
+          width: 35vmax;
+          height: 22vmax;
+          margin-top: 0;
+         }
+        
+        .pindescription{
+          width: 100%;
+          height: 50%;
+        }
+
+        
+        .top .right {
+          margin: 0;
+          line-height: 0;
+          gap: 0;
+          margin-left: 0;
+
+        }
+
+
+        .pinuserdets{
+        
+          gap: 20px;
+          margin: 0;
+        }
+        .part2{
+         gap: 1px;
+          white-space: nowrap;
+        }
+        .part2 h3{
+          font-size: 15px;
+        }
+
+
+        .btn{
+          font-size: 13px;
+          padding: 8px 13px;
+        }
+        
+        
+        .commentopt h3{
+          font-size: 14px;
+        }
+
+        .commentopt p{
+          font-size: 12px;
+          margin-top: 2px;
+          margin-left: 4px;
+
+        }
+
+
+        #notcomment{
+          font-size: 13px;
+        }
+
+
+        .createcomment{
+          padding: 0;
+          margin-bottom: 20px;
+        }
+
+
+         
+        .createcomment .userprofile {
+          width: 48px;
+          height: 48px;
+        }
+
+        .createcomment .box{
+          width: 68%;
+        }
+
+        .createcomment .box input{
+          padding-top: 8px 10px;
+        }
+
+
+        .createcomment  .add {
+          padding-right: 10px;
+        }
+
+        .createcomment .add button i{
+          font-size: 19px;
+          color: #E60023;
+          background-color: white;
+          border-radius: 50%;
+          padding: 10px;
+
+        }
+
+        .commentscontainer{
+          padding: 14px 0;
+          white-space: nowrap;
+        }
+
+
+
+        #commentusername, #commentusertext{
+          font-size: 15px;
+        }
+       
+        
+        #editcomment{
+         width: 100%;
+        }
+
+
+        .edit-comment .btne{
+          font-size: 13px;
+          padding: 8px 15px;
+        }
+      }
+    </style>
+
+    <script>
+
+
+      const username = `<%= user.username %>`;
+      const arr = Array.from(username)
+
+      const firstletter = arr[0];
+
+      document.querySelector("#firstletter").innerHTML = firstletter
+
+
+
+      let check = 0;
+      document.querySelector("#set").addEventListener("click", function () {
+
+        if (check == 0) {
+          document.querySelector("#settings").style.display = "block";
+          check = 1
+        }
+
+        else {
+          document.querySelector("#settings").style.display = "none";
+          check = 0
+        }
+      })
+
+
+
+
+      document.querySelector("#comment").addEventListener("input", function (e) {
+        document.querySelector(".add").style.display = "block";
+
+      })
+
+
+      document.querySelector("#sendcomment").addEventListener("submit", function (dets) {
+        document.querySelector("#comment").value = "";
+
+      })
+
+
+      document.querySelector("#down").addEventListener("click", function (dets) {
+        document.querySelector(".allcomments").style.opacity = 1;
+        document.querySelector("#down").style.display = "none";
+        document.querySelector("#up").style.display = "block";
+      })
+
+
+
+      document.querySelector("#up").addEventListener("click", function (event) {
+        document.querySelector(".allcomments").style.opacity = 0;
+        document.querySelector("#down").style.display = "block";
+        document.querySelector("#up").style.display = "none";
+      })
+
+
+
+
+      document.querySelectorAll('.edit .ri-more-fill').forEach(function (editIcon) {
+
+        let check = 0;
+
+        editIcon.addEventListener('click', function (event) {
+
+          var options = event.target.nextElementSibling;
+          if (check == 0) {
+
+            options.classList.replace('hidden', `visible`);
+            check = 1;
+          }
+
+          else {
+            options.classList.replace('visible', `hidden`);
+            check = 0;
+          }
+
+        });
+      });
+
+
+
+
+
+
+      const editOptions = document.querySelectorAll('.edit-option');
+
+      editOptions.forEach(option => {
+        option.addEventListener('click', function (dets) {
+
+          dets.target.parentNode.classList.replace('visible', `hidden`);
+
+          const editId = this.id;
+          const text = this.dataset.val;
+
+          document.querySelector(".edit-comment").style.display = 'block';
+
+          // document.querySelector("#save").setAttribute('href', `${editId}`);
+          document.querySelector(".edit-form").setAttribute(`action`, `${editId}`);
+
+
+          document.querySelector(".edit-comment input").value = text;
+
+
+        });
+      });
+
+
+      document.querySelector("#cut").addEventListener("click", function (dets) {
+        document.querySelector(".edit-comment").style.display = 'none';
+
+      })
+
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js">
+    </script>
+</body>
+
+</html>
